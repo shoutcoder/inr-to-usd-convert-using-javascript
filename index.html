@@ -1,0 +1,41 @@
+<html>
+  <head>
+      
+      <script src="https://pcbmagic.com/assets/cdn/jquery.min.js"></script>
+  </head>
+  <body>    
+        <div>
+            <button id="usd_btn">USD</button>
+        </div>
+        <p><spna class="csym">₹</spna><span id="p1">39</span></p>
+        <p><spna class="csym">₹</spna><span id="p2">89</span></p>
+        <p><spna class="csym">₹</spna><span id="p3">129</span></p>
+        <script>
+            
+            $('#usd_btn').click(function(){
+                
+                var price1 = $('#p1').text();
+                var price2 = $('#p2').text();
+                var price3 = $('#p3').text();
+
+                $.ajax({
+                url: 'https://api.exchangerate-api.com/v4/latest/INR',
+                success: function(data){
+                        var usd = data['rates']['USD'];
+                        //console.log(usd);
+                        var usdprice = usd*price1;
+                        var usdprice2 = usd*price2;
+                        var usdprice3 = usd*price3;
+                        $('#p1').text(usdprice);
+                        $('#p2').text(usdprice2);
+                        $('#p3').text(usdprice3);
+                        $('.csym').text('$');
+                    }
+                });
+            }); 
+
+        
+        </script>  
+     
+  </body>
+  </html>
