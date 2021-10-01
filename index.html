@@ -11,9 +11,15 @@
         <p><spna class="csym">₹</spna><span id="p2">89</span></p>
         <p><spna class="csym">₹</spna><span id="p3">129</span></p>
         <script>
-            
+            localStorage.removeItem('con_check');
             $('#usd_btn').click(function(){
-                
+                var conv_check = localStorage.getItem('con_check');
+                if(conv_check)
+                {
+                    alert('already converted');
+                    return false;
+                }
+                localStorage.setItem('con_check','true');
                 var price1 = $('#p1').text();
                 var price2 = $('#p2').text();
                 var price3 = $('#p3').text();
